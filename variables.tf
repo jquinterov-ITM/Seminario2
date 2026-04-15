@@ -1,6 +1,7 @@
 variable "aws_region" { default = "us-east-1" }
-variable "key_name"   { default = "vockey" } # nombre de la llave creada en aws para acceder a las instancias
-variable "my_ip"      { default = "201.233.77.14/32" } # mi ip publica con mascara
+variable "key_name"   { default = "testKey" } # nombre de la llave creada en aws para acceder a las instancias
+#variable "my_ip"      { default = "201.233.77.14/32" } # mi ip publica con mascara
+variable "my_ip"      { default = "0.0.0.0/0" }
 
 locals {
   envs = {
