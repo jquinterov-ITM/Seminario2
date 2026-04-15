@@ -1,7 +1,6 @@
 # Archivos de estado de Terraform
 
 *.tfstate
-
 *.tfstate.*
 
 # Archivos de respaldo de Terraform
@@ -11,29 +10,24 @@
 # Archivos de configuración local
 
 .terraform/
-
 .terraform.lock.hcl
 
 # Archivos de logs y salidas temporales
 
 crash.log
-
 *.tfplan
-
 *.tfvars.json
 
 # Credenciales y variables sensibles
 
 *.tfvars
-
 override.tf
-
 override.tf.json
+testKey.pem
 
 # Archivos generados por Terraform que no deberían estar en el control de versiones
 
 .terraformrc
-
 terraform.rc
 
 # carpeta de comparacion de planes
