@@ -2,6 +2,11 @@
 - Iniciar sesion en AWS
 - Sacar las credenciales para poner en IDE
 
+## Crear un S3
+Para que guarde los estados de terraform, con el nombre: `aws-proyecto-d-una` (o el que quieras, pero se tiene que cambiar en el archivo `backend.tf`)
+- Se crea un Bucket de proposito general
+  - en mi caso es `jquinterov.seminario2`
+
 ## Ejecutar SH "Git Bash"
 Para cargar las variables (no me funciona bien)
 - MAC o Windows en "Git Bash"
@@ -109,7 +114,6 @@ Confirmar que se hicieron los pasos de *Descargar el archivo de configuracion* y
     - Da click en "DaemonSet" y se confirma que el controlador esta corriendo   
     - Pods: que se esta ejecutando. 
 
-> db-n8n-dev.cjg1jd3af1v1.us-east-1.rds.amazonaws.com
 
 
 ### Proyecto "03-K3S-Storage"
@@ -147,8 +151,10 @@ se saca el codigo de la BD para usarlo en N8N
 
 Se valida en:
 - Workloads
-  - Deployments, Pods
+  - Deployments
     - Se confirma que n8n esta corriendo
+    De lo contrario clic en los puntos y "restart"
+  - Pods
 
 El servicio esta en:
 - Network
