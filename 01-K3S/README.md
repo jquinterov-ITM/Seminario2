@@ -1,7 +1,35 @@
 # Proyecto Seminario - Infraestructura AWS con Terraform
 
 ## Descripción
-Infraestructura AWS diseñada con Terraform que implementa una VPC con subredes públicas y privadas en múltiples zonas de disponibilidad.
+Infraestructura AWS diseñada con Terraform que implementa un clúster de **K3s** (Kubernetes ligero) en una VPC con subredes públicas y privadas distribuidas en múltiples zonas de disponibilidad.
+
+## Diagrama de Arquitectura
+
+```mermaid
+architecture-beta
+    group vpc(cloud)[AWS VPC]
+    group pub_subnet(cloud)[Subnet Publica] in vpc
+    group priv_subnet(cloud)[Subnet Privada] in vpc
+
+    service igw(internet)[Internet Gateway] in vpc
+    service master(server)[K3s Master] in pub_subnet
+    service worker(server)[K3s Worker] in priv_subnet
+    service nat(server)[NAT Gateway] in pub_subnet
+    service alb(server)[Application Load Balancer] in pub_subnet
+
+    igw:B -- T:master
+    master:R -- L:worker
+    alb:B -- T:worker
+    nat:B -- T:worker
+```
+
+*(Nota: El diagrama visualiza la conexión entre el Master en la red pública y los Workers en la red privada, protegidos por un NAT Gateway y expuestos vía ALB)*
+
+## Arquitectura del Sistema
+El proyecto implementa un clúster K3s con los siguientes roles:
+- **K3s Master**: Ubicado en la subred pública para permitir la administración y comunicación con el clúster.
+- **K3s Worker**: Ubicado en la subred privada, donde se ejecutan las cargas de trabajo de forma segura.
+- **Load Balancer (ALB)**: Expone las aplicaciones ejecutadas en los nodos trabajadores hacia Internet.
 
 ## Arquitectura de Red
 

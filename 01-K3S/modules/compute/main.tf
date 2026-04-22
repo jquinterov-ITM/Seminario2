@@ -14,6 +14,7 @@ resource "aws_instance" "master" {
   tags = { Name = "Master-${var.env}" }
 }
 
+
 resource "aws_instance" "worker" {
   ami = "ami-0c7217cdde317cfec"
   instance_type = var.worker_type
